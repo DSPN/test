@@ -14,9 +14,9 @@ select data_center from system.local;
 ENDMSG
 cqlsh -f getDcName.cqlsh
 
-datacenterName=\$(cqlsh -f getDcName.cqlsh | sed -n '4p' | xargs)
+datacenterName=$(cqlsh -f getDcName.cqlsh | sed -n '4p' | xargs)
 
-echo "DcName =" \$datacenterName
+echo "DcName =" $datacenterName
 
 cat > test.cqlsh << ENDMSG
 CREATE KEYSPACE IF NOT EXISTS test_keyspace WITH replication = {'class':'NetworkTopologyStrategy','\$datacenterName':1};
