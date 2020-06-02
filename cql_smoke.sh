@@ -19,7 +19,7 @@ cqlsh -f getDcName.cqlsh
 datacenterName=$(cqlsh -f getDcName.cqlsh | sed -n '4p' | xargs)
 
 echo "DcName =" $datacenterName
-
+###
 cat > test.cqlsh << ENDMSG
 CREATE KEYSPACE IF NOT EXISTS test_keyspace WITH replication = {'class':'NetworkTopologyStrategy','$datacenterName':1};
 CREATE TABLE IF NOT EXISTS test_keyspace.test_table (id int, color text, PRIMARY KEY (id));
