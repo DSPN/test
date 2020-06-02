@@ -7,7 +7,9 @@ java -version
 
 { set +x; } 2>/dev/null; echo -e "\$bar\n### Testing nodetool/dsetool\n\$bar\n"; set -x
 nodetool status
-echo "describe tables; exit" | cqlsh
+
+{ set +x; } 2>/dev/null; echo -e "\$bar\n### cqlsh - show version\n\$bar\n"; set -x
+echo "show version; exit" | cqlsh
 
 cat > getDcName.cqlsh << ENDMSG
 select data_center from system.local;
